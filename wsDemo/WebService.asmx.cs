@@ -9,6 +9,7 @@ using System.Data.SQLite;
 using System.Data.SqlClient;
 using System.Web.Security;
 using System.Data;
+using wsDemo.Model;
 
 namespace wsDemo
 {
@@ -68,7 +69,47 @@ namespace wsDemo
         }
 
         [WebMethod]
-        public String login(string user, string password)
+        public User login(string user, string password)
+        {
+            string BDpath = Server.MapPath("~/database.db");
+
+            Console.WriteLine(BDpath);
+
+
+            User userRes = null;
+
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
+            {
+
+                string query = "SELECT * FROM User WHERE User.userName='" + user + "' AND User.password= '" + password + "'";
+
+                SQLiteCommand comm = new SQLiteCommand(query, conn);
+                try
+                {
+                    conn.Open();
+
+                    using (SQLiteDataReader reader = comm.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            userRes = new User(reader);
+                        }
+                    }
+                }
+                catch (SqlException exc)
+                {
+                    Console.WriteLine("Error Generated. Details: " + exc.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return userRes;
+        }
+
+        [WebMethod]
+        public String getReservationByIdClient(int id)
         {
             string BDpath = Server.MapPath("~/database.db");
 

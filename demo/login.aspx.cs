@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Security;
+using wsDemo;
+using demo.ws;
 
 namespace demo
 {
@@ -25,15 +28,34 @@ namespace demo
             try
             {
                 ws.WebService service = new ws.WebService();
-                String typeUser = service.login(user, password);
-                if (typeUser.Equals("1"))
+
+             
+                var userObj = service.login(user, password);
+
+                if (userObj != null)
                 {
-                    Response.Redirect("client/client.aspx");
+
+                    Session["id"] = userObj.Id;
+                    Session["name"] = userObj.Name;
+                    Session["role"] = userObj.Type.ToString();
+                    Session.Timeout = 20;
+
+                    if (userObj.Type == TypeUser.Client)
+                    {
+                        FormsAuthentication.SetAuthCookie(txtUserName.Value, true);
+                        Response.Redirect("client/client.aspx");
+                    }
+                    else if (userObj.Type == TypeUser.Recepcionist)
+                    {
+                        FormsAuthentication.SetAuthCookie(txtUserName.Value, true);
+                        Response.Redirect("receptionist/receptionist.aspx");
+                    }
+                    else
+                    {
+                        Warninglogin.Text = "Please enter a valid username and password";
+                    }
                 }
-                else if (typeUser.Equals("2"))
-                {
-                    Response.Redirect("receptionist/receptionist.aspx");
-                }
+
             }
             catch(Exception exc)
             {

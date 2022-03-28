@@ -33,6 +33,8 @@ namespace demo.ws {
         
         private System.Threading.SendOrPostCallback loginOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getReservationByIdClientOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -78,6 +80,9 @@ namespace demo.ws {
         public event loginCompletedEventHandler loginCompleted;
         
         /// <remarks/>
+        public event getReservationByIdClientCompletedEventHandler getReservationByIdClientCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string get(string userName) {
             object[] results = this.Invoke("get", new object[] {
@@ -108,11 +113,11 @@ namespace demo.ws {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string login(string user, string password) {
+        public User login(string user, string password) {
             object[] results = this.Invoke("login", new object[] {
                         user,
                         password});
-            return ((string)(results[0]));
+            return ((User)(results[0]));
         }
         
         /// <remarks/>
@@ -138,6 +143,37 @@ namespace demo.ws {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getReservationByIdClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getReservationByIdClient(string user, string password) {
+            object[] results = this.Invoke("getReservationByIdClient", new object[] {
+                        user,
+                        password});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getReservationByIdClientAsync(string user, string password) {
+            this.getReservationByIdClientAsync(user, password, null);
+        }
+        
+        /// <remarks/>
+        public void getReservationByIdClientAsync(string user, string password, object userState) {
+            if ((this.getReservationByIdClientOperationCompleted == null)) {
+                this.getReservationByIdClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetReservationByIdClientOperationCompleted);
+            }
+            this.InvokeAsync("getReservationByIdClient", new object[] {
+                        user,
+                        password}, this.getReservationByIdClientOperationCompleted, userState);
+        }
+        
+        private void OngetReservationByIdClientOperationCompleted(object arg) {
+            if ((this.getReservationByIdClientCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getReservationByIdClientCompleted(this, new getReservationByIdClientCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -154,6 +190,91 @@ namespace demo.ws {
             }
             return false;
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class User {
+        
+        private int idField;
+        
+        private string emailField;
+        
+        private string passwordField;
+        
+        private string nameField;
+        
+        private TypeUser typeField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public TypeUser Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public enum TypeUser {
+        
+        /// <remarks/>
+        Client,
+        
+        /// <remarks/>
+        Recepcionist,
+        
+        /// <remarks/>
+        NotFound,
     }
     
     /// <remarks/>
@@ -195,6 +316,32 @@ namespace demo.ws {
         private object[] results;
         
         internal loginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public User Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((User)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void getReservationByIdClientCompletedEventHandler(object sender, getReservationByIdClientCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getReservationByIdClientCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getReservationByIdClientCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
