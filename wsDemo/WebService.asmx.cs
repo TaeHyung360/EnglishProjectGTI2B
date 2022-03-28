@@ -109,32 +109,34 @@ namespace wsDemo
         }
 
         [WebMethod]
-        public String getReservationByIdClient(int id)
+        public List<Reservation> getReservationByIdClient(int id)
         {
             string BDpath = Server.MapPath("~/database.db");
 
             Console.WriteLine(BDpath);
 
-            string typeUser = "";
+            List<Reservation> reservations = new List<Reservation>();
 
             using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
             {
 
-                string query = "SELECT * FROM User WHERE User.userName='" + user + "' AND User.password= '" + password + "'";
+                string query = "SELECT *, (select id from ROOM where id=Reservation.id), (select typeRoom from ROOM where id=Reservation.id), (select roomName from ROOM where id=Reservation.id),(select roomDescription from ROOM where id=Reservation.id),(select price from ROOM where id=Reservation.id),(select available from ROOM where id=Reservation.id),(select urlPhoto from ROOM where id=Reservation.id) FROM Reservation WHERE idClient = @id";
+                
+                SQLiteCommand command = new SQLiteCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                command.Prepare();
 
-                SQLiteCommand comm = new SQLiteCommand(query, conn);
+
+               
                 try
                 {
                     conn.Open();
 
-                    using (SQLiteDataReader reader = comm.ExecuteReader())
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            String userName = reader.GetString(4);
-                            FormsAuthentication.SetAuthCookie(userName, true);
-                            typeUser = reader.GetInt32(3).ToString();
-                            return typeUser;
+                            reservations.Add(new Reservation(reader));
                         }
                     }
                 }
@@ -147,7 +149,7 @@ namespace wsDemo
                     conn.Close();
                 }
             }
-            return typeUser;
+            return reservations;
         }
     }
 }
