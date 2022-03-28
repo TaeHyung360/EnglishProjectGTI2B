@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
-using System.Web.Security;
-using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using wsDemo.model;
 
 namespace demo
 {
@@ -17,24 +8,7 @@ namespace demo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session != null)
-            {
-                if (HttpContext.Current.User.Identity.IsAuthenticated && Session["role"] == TypeUser.Client.ToString())
-                {
-                    Response.Redirect("Client.aspx");
-                }
-                else if (HttpContext.Current.User.Identity.IsAuthenticated && Session["role"] == TypeUser.Recepcionist.ToString())
-                {
-                    Response.Redirect("Receptionist.aspx");
-                }
-            }
-            else
-            {
-                if (!Page.IsPostBack)
-                {
 
-                }
-            }
         }
         protected void button_Click_Login(object sender, EventArgs e)
         {
@@ -48,11 +22,23 @@ namespace demo
                 password = BitConverter.ToString(data).Replace("-", string.Empty);
             }
 
-            WebService service = new WebService();
-
-            String userData = service.login(user, password);
-
-            
+            try
+            {
+                ws.WebService service = new ws.WebService();
+                String typeUser = service.login(user, password);
+                if (typeUser.Equals("1"))
+                {
+                    Response.Redirect("client/client.aspx");
+                }
+                else if (typeUser.Equals("2"))
+                {
+                    Response.Redirect("receptionist/receptionist.aspx");
+                }
+            }
+            catch(Exception exc)
+            {
+                Console.WriteLine(exc);
+            }
         }
     }
 }
