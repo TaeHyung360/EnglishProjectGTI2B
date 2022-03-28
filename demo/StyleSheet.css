@@ -1,0 +1,178 @@
+﻿/* For a desktop */
+body {
+    background-color: rgb(255, 255, 255);
+    font-size: 1em;
+}
+
+.txtboxok {
+    position: absolute;
+    top: 10px;
+    left: 20%;
+    z-index: 5;
+    width: 42%;
+    height: 17px;
+}
+
+.buttonok {
+    position: absolute;
+    top: 10px;
+    left: 64%;
+    z-index: 6;
+    width: 10%;
+    height: 25px;
+}
+
+.header {
+    float: left;
+    width: 97.5%;
+    height: 129px;
+    margin: 19px 0 0 1%;
+    background-color: rgb(255, 0, 0);
+}
+
+.left {
+    position: relative;
+    float: left;
+    clear: both;
+    z-index: 1;
+    width: 20.75%;
+    height: 641px;
+    margin: 15px 0 0 1%;
+    background-color: rgb(0, 128, 0);
+}
+
+.right {
+    position: relative;
+    float: left;
+    z-index: 2;
+    width: 20.75%;
+    height: 641px;
+    margin: -641px 0 0 78%;
+    background-color: blue;
+}
+
+.content {
+    position: relative;
+    float: left;
+    z-index: 4;
+    width: 53%;
+    height: 641px;
+    margin: 15px 0 0 1%;
+    background-color: pink;
+}
+
+.footer {
+    float: left;
+    width: 97.5%;
+    height: 56px;
+    margin: 10px 0 0 1%;
+    background-color: yellow;
+}
+
+/* For a tablet */
+@media(max-width: 992px) {
+    .txtboxok {
+        left: 10%;
+        width: 50%;
+    }
+
+    .buttonok {
+        left: 63%;
+        width: 20%;
+    }
+
+    .header {
+        width: 80%;
+        height: 136px;
+        margin-left: 10%;
+    }
+
+    .left {
+        position: relative;
+        z-index: 1;
+        width: 19%;
+        height: 456px;
+        margin-top: 8px;
+        margin-left: 10%;
+    }
+
+    .right {
+        position: relative;
+        z-index: 2;
+        width: 19%;
+        height: 456px;
+        margin-top: -456px;
+        margin-left: 71%;
+    }
+
+    .content {
+        position: relative;
+        z-index: 4;
+        width: 39%;
+        height: 456px;
+        margin-top: 8px;
+        margin-left: 1.5%;
+    }
+
+    .footer {
+        width: 80%;
+        margin-top: 8px;
+        margin-left: 10%;
+    }
+}
+
+/* For a smartphone */
+@media(max-width: 688px) {
+    body {
+        font-size: 1em;
+    }
+
+    .txtboxok {
+        left: 10%;
+        width: 40%;
+    }
+
+    .buttonok {
+        left: 52%;
+        width: 10%;
+    }
+
+    .header {
+        width: 80%;
+        height: 87px;
+        margin-left: 10%;
+    }
+
+    .left {
+        position: relative;
+        z-index: 1;
+        width: 80%;
+        height: 87px;
+        margin-top: 101px;
+        margin-left: 10%;
+    }
+
+    .right {
+        position: relative;
+        z-index: 2;
+        width: 80%;
+        height: 87px;
+        margin-top: -325px;
+        margin-left: 10%;
+    }
+
+    .content {
+        position: relative;
+        clear: both;
+        z-index: 4;
+        width: 80%;
+        height: 135px;
+        margin-left: 10%;
+    }
+
+    .footer {
+        height: 43px;
+        margin-top: 7px;
+        margin-left: 10%;
+    }
+}
