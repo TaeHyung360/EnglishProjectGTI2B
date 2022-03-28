@@ -14,11 +14,25 @@
 
         <div class="header">
 
-            <h1 id="caption" runat="server">DEMO</h1>
+            <a href="Index.aspx" id="Logo">
 
-        </div>
+                <img src="../Images/logoHotel.jpg" alt="logo" width="50" height="50" />
 
-        <div class="left">
+                <h1 id="txtHeader">Abama Hotel Resort</h1>
+
+            </a>
+        
+            <nav>
+
+                <ul>
+
+                    <li><a href="contact.aspx" id="txtHeader">Contact us</a></li>
+
+                    <li><a href="login.aspx" id="txtHeader">Log In</a></li>   
+
+                </ul>
+
+            </nav>
 
         </div>
 
@@ -30,13 +44,9 @@
 
         </div>
 
-        <div class="right">
-
-        </div>
-
         <div class="footer">
 
-            <h1>copyrigth</h1>
+            <p>@Copyright Don Juan Ferrera Sala</p>
 
         </div>
 

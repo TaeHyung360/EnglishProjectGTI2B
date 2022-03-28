@@ -21,11 +21,7 @@ namespace wsDemo
     public class WebService : System.Web.Services.WebService
     {
 
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
+ 
         [WebMethod]
         public string get(string userName)
         {
@@ -67,6 +63,44 @@ namespace wsDemo
                 }
 
             return userNameSaved;
+        }
+
+        protected String login(string user, string password)
+        {
+            string BDpath = Server.MapPath("~/database.db");
+
+            Console.WriteLine(BDpath);
+
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
+            {
+
+                string query = "SELECT * FROM users WHERE users.user='" + user + "' AND users.password= '" + password + "'";
+
+                SQLiteCommand comm = new SQLiteCommand(query, conn);
+                try
+                {
+                    conn.Open();
+
+                    using (SQLiteDataReader reader = comm.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            String userName = reader.GetString(0);
+                            FormsAuthentication.SetAuthCookie(userName, true);
+                            return userName;
+                        }
+                    }
+                }
+                catch (SqlException exc)
+                {
+                    Console.WriteLine("Error Generated. Details: " + exc.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return "";
         }
     }
 }

@@ -20,17 +20,14 @@ namespace demo
             //Tomamos el elemento html que queremos
             HtmlGenericControl heading = (HtmlGenericControl)master.FindControl("caption");
 
-            //Devuelve u nvalor T o F
-            if (Page.IsPostBack == false)
-            {
-                heading.InnerText = "Home";
-            }
-            else
-            {
-                heading.InnerText = "Home postback";
-            }
         }
 
+        protected void button_Click_reservation(object sender, EventArgs e)
+        {
+            Response.Redirect("ContactPage.aspx");
+        }
+
+        /*
         protected void button_Click(object sender, EventArgs e)
         {
 
@@ -45,9 +42,8 @@ namespace demo
 
             heading.InnerText = "Hola " + service.get(name).ToString();
 
-
-            
-
         }
+        */
+
     }
 }
