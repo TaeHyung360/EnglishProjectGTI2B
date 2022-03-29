@@ -15,7 +15,6 @@ namespace demo.receptionist
         int id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             try
             {
                 ws.WebService service = new ws.WebService();

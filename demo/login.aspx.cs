@@ -41,12 +41,13 @@ namespace demo
 
                     if (userObj.Type == TypeUser.Client)
                     {
-                        FormsAuthentication.SetAuthCookie(txtUserName.Value, true);
+                        FormsAuthentication.SetAuthCookie(userObj.Type.ToString(), true);
+                        bool isClient = Roles.Enabled;
                         Response.Redirect("client/client.aspx");
                     }
-                    else if (userObj.Type == TypeUser.Recepcionist)
+                    else if (userObj.Type == TypeUser.Receptionist)
                     {
-                        FormsAuthentication.SetAuthCookie(txtUserName.Value, true);
+                        FormsAuthentication.SetAuthCookie(userObj.Type.ToString(), true);
                         Response.Redirect("receptionist/receptionist.aspx");
                     }
                     else

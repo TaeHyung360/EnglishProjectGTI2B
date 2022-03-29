@@ -44,7 +44,7 @@ namespace wsDemo.Model
     public enum TypeUser
     {
         Client = 1,
-        Recepcionist = 2,
+        Receptionist = 2,
         NotFound
     }
 }

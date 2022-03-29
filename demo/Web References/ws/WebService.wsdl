@@ -43,7 +43,7 @@
       <s:simpleType name="TypeUser">
         <s:restriction base="s:string">
           <s:enumeration value="Client" />
-          <s:enumeration value="Recepcionist" />
+          <s:enumeration value="Receptionist" />
           <s:enumeration value="NotFound" />
         </s:restriction>
       </s:simpleType>

@@ -425,7 +425,7 @@ namespace demo.ws {
         Client,
         
         /// <remarks/>
-        Recepcionist,
+        Receptionist,
         
         /// <remarks/>
         NotFound,

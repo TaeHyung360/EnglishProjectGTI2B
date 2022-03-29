@@ -76,7 +76,6 @@
     <Content Include="index.aspx" />
     <Content Include="MasterPage.Master" />
     <Content Include="login.aspx" />
-    <Content Include="client\Web.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

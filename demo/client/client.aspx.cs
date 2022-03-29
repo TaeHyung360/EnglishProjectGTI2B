@@ -9,6 +9,7 @@ namespace demo.client
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             try
             {
                 ws.WebService service = new ws.WebService();
