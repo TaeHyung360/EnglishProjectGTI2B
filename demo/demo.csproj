@@ -76,6 +76,7 @@
     <Content Include="index.aspx" />
     <Content Include="MasterPage.Master" />
     <Content Include="login.aspx" />
+    <Content Include="client\Web.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +93,7 @@
     <Content Include="Web References\ws\User.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="receptionist\Web.config" />
     <None Include="Web References\ws\WebService.disco" />
     <Content Include="Web.config" />
   </ItemGroup>

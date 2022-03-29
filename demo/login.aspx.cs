@@ -42,7 +42,6 @@ namespace demo
                     if (userObj.Type == TypeUser.Client)
                     {
                         FormsAuthentication.SetAuthCookie(userObj.Type.ToString(), true);
-                        bool isClient = Roles.Enabled;
                         Response.Redirect("client/client.aspx");
                     }
                     else if (userObj.Type == TypeUser.Receptionist)

@@ -26,9 +26,9 @@
 
                 <ul>
 
-                    <li><a href="contact.aspx" id="txtHeader">Contact us</a></li>
+                    <li><a href="http://localhost:50231/contact.aspx" id="txContact">Contact us</a></li>
 
-                    <li><a href="login.aspx" id="txtHeader">Log In</a></li>   
+                    <li><a href="http://localhost:50231/login.aspx" id="txtLogin">Log In</a></li>   
 
                 </ul>
 
