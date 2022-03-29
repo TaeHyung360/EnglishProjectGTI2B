@@ -120,14 +120,54 @@ namespace wsDemo
             using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
             {
 
-                string query = "SELECT *, (select id from ROOM where id=Reservation.id), (select typeRoom from ROOM where id=Reservation.id), (select roomName from ROOM where id=Reservation.id),(select roomDescription from ROOM where id=Reservation.id),(select price from ROOM where id=Reservation.id),(select available from ROOM where id=Reservation.id),(select urlPhoto from ROOM where id=Reservation.id) FROM Reservation WHERE idClient = @id";
-                
+                string query = "SELECT * FROM Reservation inner join Room on Reservation.idRoom = Room.id WHERE idClient = @id";
                 SQLiteCommand command = new SQLiteCommand(query, conn);
                 command.Parameters.AddWithValue("@id", id);
                 command.Prepare();
 
 
                
+                try
+                {
+                    conn.Open();
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            reservations.Add(new Reservation(reader));
+                        }
+                    }
+                }
+                catch (SqlException exc)
+                {
+                    Console.WriteLine("Error Generated. Details: " + exc.ToString());
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return reservations;
+        }
+
+        [WebMethod]
+        public List<Reservation> getReservationByIdReceptionist(int id)
+        {
+            string BDpath = Server.MapPath("~/database.db");
+
+            Console.WriteLine(BDpath);
+
+            List<Reservation> reservations = new List<Reservation>();
+
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
+            {
+
+                string query = "SELECT * FROM Reservation inner join Room on Reservation.idRoom = Room.id WHERE idReceptionist = @id";
+                SQLiteCommand command = new SQLiteCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                command.Prepare();
+
                 try
                 {
                     conn.Open();

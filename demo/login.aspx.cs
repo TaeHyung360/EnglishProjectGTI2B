@@ -2,7 +2,6 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
-using wsDemo;
 using demo.ws;
 
 namespace demo
@@ -27,7 +26,7 @@ namespace demo
 
             try
             {
-                ws.WebService service = new ws.WebService();
+                WebService service = new WebService();
 
              
                 var userObj = service.login(user, password);

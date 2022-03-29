@@ -45,7 +45,7 @@ namespace wsDemo.Model
                  reader.GetString(8),
                  reader.GetString(9),
                  reader.GetString(10),
-                 reader.GetValue(11) +"",
+                 reader.GetValue(11) + "",
                  reader.GetInt32(12) == 1,
                  reader.GetString(13)
             );

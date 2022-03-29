@@ -35,6 +35,8 @@ namespace demo.ws {
         
         private System.Threading.SendOrPostCallback getReservationByIdClientOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getReservationByIdReceptionistOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +83,9 @@ namespace demo.ws {
         
         /// <remarks/>
         public event getReservationByIdClientCompletedEventHandler getReservationByIdClientCompleted;
+        
+        /// <remarks/>
+        public event getReservationByIdReceptionistCompletedEventHandler getReservationByIdReceptionistCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -144,32 +149,59 @@ namespace demo.ws {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getReservationByIdClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string getReservationByIdClient(string user, string password) {
+        public Reservation[] getReservationByIdClient(int id) {
             object[] results = this.Invoke("getReservationByIdClient", new object[] {
-                        user,
-                        password});
-            return ((string)(results[0]));
+                        id});
+            return ((Reservation[])(results[0]));
         }
         
         /// <remarks/>
-        public void getReservationByIdClientAsync(string user, string password) {
-            this.getReservationByIdClientAsync(user, password, null);
+        public void getReservationByIdClientAsync(int id) {
+            this.getReservationByIdClientAsync(id, null);
         }
         
         /// <remarks/>
-        public void getReservationByIdClientAsync(string user, string password, object userState) {
+        public void getReservationByIdClientAsync(int id, object userState) {
             if ((this.getReservationByIdClientOperationCompleted == null)) {
                 this.getReservationByIdClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetReservationByIdClientOperationCompleted);
             }
             this.InvokeAsync("getReservationByIdClient", new object[] {
-                        user,
-                        password}, this.getReservationByIdClientOperationCompleted, userState);
+                        id}, this.getReservationByIdClientOperationCompleted, userState);
         }
         
         private void OngetReservationByIdClientOperationCompleted(object arg) {
             if ((this.getReservationByIdClientCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getReservationByIdClientCompleted(this, new getReservationByIdClientCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getReservationByIdReceptionist", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Reservation[] getReservationByIdReceptionist(int id) {
+            object[] results = this.Invoke("getReservationByIdReceptionist", new object[] {
+                        id});
+            return ((Reservation[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getReservationByIdReceptionistAsync(int id) {
+            this.getReservationByIdReceptionistAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void getReservationByIdReceptionistAsync(int id, object userState) {
+            if ((this.getReservationByIdReceptionistOperationCompleted == null)) {
+                this.getReservationByIdReceptionistOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetReservationByIdReceptionistOperationCompleted);
+            }
+            this.InvokeAsync("getReservationByIdReceptionist", new object[] {
+                        id}, this.getReservationByIdReceptionistOperationCompleted, userState);
+        }
+        
+        private void OngetReservationByIdReceptionistOperationCompleted(object arg) {
+            if ((this.getReservationByIdReceptionistCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getReservationByIdReceptionistCompleted(this, new getReservationByIdReceptionistCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -278,6 +310,192 @@ namespace demo.ws {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Room {
+        
+        private int idField;
+        
+        private string typeRoomField;
+        
+        private string nameField;
+        
+        private string descriptionField;
+        
+        private string priceField;
+        
+        private string urlPhotoField;
+        
+        private bool availableField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeRoom {
+            get {
+                return this.typeRoomField;
+            }
+            set {
+                this.typeRoomField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Price {
+            get {
+                return this.priceField;
+            }
+            set {
+                this.priceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UrlPhoto {
+            get {
+                return this.urlPhotoField;
+            }
+            set {
+                this.urlPhotoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool Available {
+            get {
+                return this.availableField;
+            }
+            set {
+                this.availableField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Reservation {
+        
+        private int idField;
+        
+        private int idClientField;
+        
+        private int idRecepcionistField;
+        
+        private Room roomField;
+        
+        private string nameField;
+        
+        private string arrivalDateField;
+        
+        private int nightsField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int IdClient {
+            get {
+                return this.idClientField;
+            }
+            set {
+                this.idClientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int IdRecepcionist {
+            get {
+                return this.idRecepcionistField;
+            }
+            set {
+                this.idRecepcionistField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Room Room {
+            get {
+                return this.roomField;
+            }
+            set {
+                this.roomField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ArrivalDate {
+            get {
+                return this.arrivalDateField;
+            }
+            set {
+                this.arrivalDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Nights {
+            get {
+                return this.nightsField;
+            }
+            set {
+                this.nightsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
     public delegate void getCompletedEventHandler(object sender, getCompletedEventArgs e);
     
@@ -347,10 +565,36 @@ namespace demo.ws {
         }
         
         /// <remarks/>
-        public string Result {
+        public Reservation[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((Reservation[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    public delegate void getReservationByIdReceptionistCompletedEventHandler(object sender, getReservationByIdReceptionistCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getReservationByIdReceptionistCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getReservationByIdReceptionistCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Reservation[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Reservation[])(this.results[0]));
             }
         }
     }
