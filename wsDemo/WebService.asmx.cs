@@ -191,5 +191,120 @@ namespace wsDemo
             }
             return reservations;
         }
+
+        [WebMethod]
+        public bool addReservation(int idClient,int idReceptionist,string idRoom, string reservationName, string arrivalDate,int nights)
+        {
+            bool res = false;
+
+            string BDpath = Server.MapPath("~/database.db");
+
+            Console.WriteLine(BDpath);
+
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
+            {
+
+                string query = "INSERT INTO Reservation VALUES (NULL, @idClient, @idReceptionist, @idRoom, @reservationName, @arrivalDate, @nights)";
+                SQLiteCommand command = new SQLiteCommand(query, conn);
+                command.Parameters.AddWithValue("@idClient", idClient);
+                command.Parameters.AddWithValue("@idReceptionist", idReceptionist);
+                command.Parameters.AddWithValue("@idRoom", idRoom);
+                command.Parameters.AddWithValue("@reservationName", reservationName);
+                command.Parameters.AddWithValue("@arrivalDate", arrivalDate);
+                command.Parameters.AddWithValue("@nights", nights);
+                command.Prepare();
+
+                try
+                {
+                    conn.Open();
+                    res = (command.ExecuteNonQuery() > 0);         
+                }
+                catch (SqlException exc)
+                {
+                    Console.WriteLine("Error Generated. Details: " + exc.ToString());
+                    res = false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return res;
+        }
+
+        [WebMethod]
+        public bool updateReservation(int id, int idClient, string idRoom, string reservationName, string arrivalDate, int nights)
+        {
+            bool res = false;
+
+            string BDpath = Server.MapPath("~/database.db");
+
+            Console.WriteLine(BDpath);
+
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
+            {
+
+                string query = "UPDATE Reservation SET idClient=@idClient, reservationName=@reservationName, idRoom=@idRoom, arrivalDate=@arrivalDate, reservationNights=@nights WHERE Reservation.id=@id;";
+                SQLiteCommand command = new SQLiteCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@idClient", idClient);
+                command.Parameters.AddWithValue("@idRoom", idRoom);
+                command.Parameters.AddWithValue("@reservationName", reservationName);
+                command.Parameters.AddWithValue("@arrivalDate", arrivalDate);
+                command.Parameters.AddWithValue("@nights", nights);
+                command.Prepare();
+
+                try
+                {
+                    conn.Open();
+                    res = (command.ExecuteNonQuery() > 0);
+                }
+                catch (SqlException exc)
+                {
+                    Console.WriteLine("Error Generated. Details: " + exc.ToString());
+                    res = false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return res;
+        }
+
+        [WebMethod]
+        public bool deleteReservation(int id)
+        {
+            bool res = false;
+
+            string BDpath = Server.MapPath("~/database.db");
+
+            Console.WriteLine(BDpath);
+
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source =" + BDpath + ";Version=3;"))
+            {
+
+                string query = "DELETE FROM Reservation WHERE id=@id;";
+                SQLiteCommand command = new SQLiteCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                command.Prepare();
+
+                try
+                {
+                    conn.Open();
+                    res = (command.ExecuteNonQuery() > 0);
+                }
+                catch (SqlException exc)
+                {
+                    Console.WriteLine("Error Generated. Details: " + exc.ToString());
+                    res = false;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return res;
+        }
     }
 }

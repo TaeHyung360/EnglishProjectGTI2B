@@ -52,5 +52,6 @@ namespace wsDemo.Model
             Room = r;
 
         }
+
     }
 }

@@ -102,6 +102,58 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="addReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idClient" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idReceptionist" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="idRoom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reservationName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrivalDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nights" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="addReservationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idClient" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="idRoom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reservationName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrivalDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nights" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateReservationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteReservation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteReservationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="deleteReservationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="getSoapIn">
@@ -128,6 +180,24 @@
   <wsdl:message name="getReservationByIdReceptionistSoapOut">
     <wsdl:part name="parameters" element="tns:getReservationByIdReceptionistResponse" />
   </wsdl:message>
+  <wsdl:message name="addReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:addReservation" />
+  </wsdl:message>
+  <wsdl:message name="addReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:addReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:updateReservation" />
+  </wsdl:message>
+  <wsdl:message name="updateReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:updateReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteReservationSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteReservation" />
+  </wsdl:message>
+  <wsdl:message name="deleteReservationSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteReservationResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
     <wsdl:operation name="get">
       <wsdl:input message="tns:getSoapIn" />
@@ -144,6 +214,18 @@
     <wsdl:operation name="getReservationByIdReceptionist">
       <wsdl:input message="tns:getReservationByIdReceptionistSoapIn" />
       <wsdl:output message="tns:getReservationByIdReceptionistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <wsdl:input message="tns:addReservationSoapIn" />
+      <wsdl:output message="tns:addReservationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateReservation">
+      <wsdl:input message="tns:updateReservationSoapIn" />
+      <wsdl:output message="tns:updateReservationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <wsdl:input message="tns:deleteReservationSoapIn" />
+      <wsdl:output message="tns:deleteReservationSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
@@ -184,6 +266,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <soap:operation soapAction="http://tempuri.org/addReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReservation">
+      <soap:operation soapAction="http://tempuri.org/updateReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <soap:operation soapAction="http://tempuri.org/deleteReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -216,6 +325,33 @@
     </wsdl:operation>
     <wsdl:operation name="getReservationByIdReceptionist">
       <soap12:operation soapAction="http://tempuri.org/getReservationByIdReceptionist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <soap12:operation soapAction="http://tempuri.org/addReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateReservation">
+      <soap12:operation soapAction="http://tempuri.org/updateReservation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteReservation">
+      <soap12:operation soapAction="http://tempuri.org/deleteReservation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
