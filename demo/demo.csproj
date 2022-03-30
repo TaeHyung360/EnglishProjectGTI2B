@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="client\client.aspx" />
     <Content Include="contact.aspx" />
+    <Content Include="Images\image_contact.png" />
     <Content Include="Images\image_main_content.jpg" />
     <Content Include="Images\logoHotel.jpg" />
     <Content Include="index.aspx" />

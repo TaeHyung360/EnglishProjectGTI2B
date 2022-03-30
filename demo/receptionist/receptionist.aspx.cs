@@ -45,8 +45,7 @@ namespace demo.receptionist
             {
                 Reservation res = getReservationSelectedListBox();
                 Session["idRes"] = res.Id;
-                ResIdClient.Text = res.IdClient.ToString();
-                // ResIdReceptionist.Text = reservation.IdRecepcionist.ToString();
+                ResIdClient.Text = res.IdClient.ToString(); 
                 ResRoom.Text = res.Room.ID.ToString();
                 ResName.Text = res.Name.ToString();
                 ResArrivalDate.Text = res.ArrivalDate.ToString();

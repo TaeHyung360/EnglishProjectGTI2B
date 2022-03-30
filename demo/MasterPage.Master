@@ -19,7 +19,7 @@
 
                 <a href="Index.aspx" id="Logo"><img class="linkLogo" src="../Images/logoHotel.jpg" alt="logo"/></a>
 
-            <h1 class="txtHeader" id="txtHeader">Abama Hotel Resort</h1>
+                <h1 class="txtHeader" id="txtHeader">Abama Hotel Resort</h1>
 
             </div>
         

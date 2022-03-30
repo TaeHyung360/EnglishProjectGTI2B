@@ -1,20 +1,11 @@
-﻿/*=========================================================================================*/
-/*
-Nombre archivo: styleSheet.css
-Autor: Juan Ferrera Sala
-Fecha: 30/03/2021
-*/
-/*=========================================================================================*/
+﻿
 @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
-/*=========================================================================================*/
+
 * {
     box-sizing: border-box;
     font-family: 'Overpass', sans-serif;
 }
-/*=========================================================================================*/
-/*Body*/
-/*=========================================================================================*/
-/* For a desktop */
+
 
 body {
     margin: 0;
@@ -135,9 +126,8 @@ nav ul li a {
     padding-left:1.5rem;
 }
 
-/*=========================================================================================*/
-/*Login*/
-/*=========================================================================================*/
+
+
 
 h2_login {
     color: rgb(102, 102, 102);
@@ -167,10 +157,13 @@ h2_login {
     font-size: 18px;
     border: 1px solid rgb(0, 0, 0);
 }
+.logLogin {
+    color: #dd5840;
+    font-size: 1rem;
+}
 
-/*=========================================================================================*/
-/*Client*/
-/*=========================================================================================*/
+
+
 .h2_client {
     color: rgb(102, 102, 102);
     font-size: 3rem;
@@ -178,7 +171,7 @@ h2_login {
 
 .main_content_client {
     height: 80.5vh;
-    width:100%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -187,7 +180,122 @@ h2_login {
     height:20px;
     width:800px;
 }
-/* For a tablet */
+
+
+
+
+.h2_receptionist {
+    color: rgb(102, 102, 102);
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.main_content_recptionist {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.content_recption {
+    width:auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content_txt_box_reception {
+    display: flex;
+    align-items: center;
+}
+.listbox {
+    height: 10rem;
+    width:34rem;
+}
+.content_txt_left {
+    height: 20rem;
+    padding: 2rem;
+}
+.content_txt_rigth {
+    height: 20rem;
+    padding: 2rem;
+}
+.content_txt_btn {
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    flex-direction: column;
+}
+.btn_container{
+    padding:1rem;
+}
+.inputTxt_reception {
+    height: 2rem;
+    width: 15rem;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid rgb(0, 0, 0);
+}
+.btn_select {
+    height: 2.3rem;
+    font-size: 1.3rem;
+    width: 10rem;
+    background-color: #3f888f;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+.btn_add {
+    height: 2.3rem;
+    font-size: 1.3rem;
+    width: 10rem;
+    background-color: #3ABB90;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+.btn_update {
+    height: 2.3rem;
+    font-size: 1.3rem;
+    width: 10rem;
+    background-color: #3ABB90;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+.btn_delete {
+    height: 2.3rem;
+    font-size: 1.3rem;
+    width: 10rem;
+    background-color: #dd5840;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+.out_text {
+    color: rgb(102, 102, 102);
+    font-size: 2rem;
+}
+.h2_contact {
+    color: rgb(102, 102, 102);
+    font-size: 3rem;
+    line-height: 3rem;
+}
+.main_content_contact {
+    padding:2rem;
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imagePc{
+    display:block;
+}
+.imageTablet {
+    display: none;
+}
+
 @media(max-width: 992px) {
     .h2_main_content_tablet {
         font-size:3rem;
@@ -200,18 +308,62 @@ h2_login {
     .txtHeader {
         display:none;
     }
-    /*=========================================================================================*/
-    /*Client*/
-    /*=========================================================================================*/
+
+
     .client_table {
         height: 20px;
         width: 100px;
     }
-}
+    .main_content_recptionist {
+        height: auto;
+        width: 100%;
+    }
+    .h2_receptionist {
+        padding:2rem
+    }
+    .listbox {
+        width: 26rem;
+    }
+    .content_txt_left {
+        height: 20rem;
+    }
+    .content_txt_rigth {
+        height: 20rem;
+    }
+    .content_txt_btn {
+        display: flex;
+    }
+    .btn_container {
+        width: auto;
+        align-items: center;
+    }
+    .inputTxt_reception {
+        height: 2rem;
+        width: 11rem;
+        border-radius: 8px;
+        font-size: 18px;
+        border: 1px solid rgb(0, 0, 0);
+    }
+    .btn_select {
+        margin: 0.5rem;
+    }
 
-/* For a smartphone */
-@media(max-width: 688px) {
-   
+    .btn_add {
+        margin: 0.5rem;
+    }
 
-    
+    .btn_update {
+        margin: 0.5rem;
+    }
+
+    .btn_delete {
+        margin: 0.5rem;
+    }
+    .imagePc {
+        display: none;
+    }
+
+    .imageTablet {
+        display: block;
+    }
 }

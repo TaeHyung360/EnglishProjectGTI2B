@@ -15,10 +15,6 @@ namespace demo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Guardamos la master page
-            MasterPage master = (MasterPage)this.Master;
-            //Tomamos el elemento html que queremos
-            HtmlGenericControl heading = (HtmlGenericControl)master.FindControl("caption");
 
         }
 
@@ -27,23 +23,6 @@ namespace demo
             Response.Redirect("Contact.aspx");
         }
 
-        /*
-        protected void button_Click(object sender, EventArgs e)
-        {
-
-            WebService service = new WebService();
-
-            string name = txtBox.Text;
-
-            //Guardamos la master page
-            MasterPage master = (MasterPage)this.Master;
-            //Tomamos el elemento html que queremos
-            HtmlGenericControl heading = (HtmlGenericControl)master.FindControl("caption");
-
-            heading.InnerText = "Hola " + service.get(name).ToString();
-
-        }
-        */
 
     }
 }

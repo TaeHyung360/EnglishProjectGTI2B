@@ -27,6 +27,8 @@
 
         <br />
 
+        <asp:Label class="logLogin" ID="log_login" runat="server" Text=""></asp:Label>
+
         <asp:Button class="btn" ID="Button1" Text="Login" OnClick="button_Click_Login" runat="server"/>
 
     </section>

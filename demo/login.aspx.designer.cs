@@ -42,6 +42,15 @@ namespace demo
         protected global::System.Web.UI.WebControls.Label Warninglogin;
 
         /// <summary>
+        /// log_login control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label log_login;
+
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>

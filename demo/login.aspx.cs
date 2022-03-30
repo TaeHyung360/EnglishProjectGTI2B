@@ -10,7 +10,7 @@ namespace demo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
         protected void button_Click_Login(object sender, EventArgs e)
         {
@@ -52,13 +52,20 @@ namespace demo
                     else
                     {
                         Warninglogin.Text = "Please enter a valid username and password";
+                        log_login.Text = "Please enter a valid username and password";
                     }
+                }
+                else
+                {
+                    log_login.Text = "Please enter a valid username and password";
                 }
 
             }
+
             catch(Exception exc)
             {
                 Console.WriteLine(exc);
+                log_login.Text = "ERROR";
             }
         }
     }
