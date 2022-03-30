@@ -7,13 +7,11 @@
 
     <section class="main_content_login">
 
-        <h2>Login Page</h2>
+        <h2 class="h2_login">Login Page</h2>
 
         <div>
 
-            <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
-
-            <input id="txtUserName" type="text" runat="server">
+            <input id="txtUserName" class="inputTxt" placeholder="  User" type="text" runat="server">
 
             <br />
 
@@ -21,9 +19,7 @@
 
         <div>
 
-            <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
-
-            <input id="txtUserPass" type="password" runat="server">
+            <input id="txtUserPass" class="inputTxt" placeholder="  Password" type="password" runat="server">
             
         </div>
 
@@ -31,7 +27,7 @@
 
         <br />
 
-        <asp:Button ID="Button1" Text="Login" OnClick="button_Click_Login" runat="server"/>
+        <asp:Button class="btn" ID="Button1" Text="Login" OnClick="button_Click_Login" runat="server"/>
 
     </section>
 

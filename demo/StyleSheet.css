@@ -138,12 +138,54 @@ nav ul li a {
 /*=========================================================================================*/
 /*Login*/
 /*=========================================================================================*/
+
+h2_login {
+    color: rgb(102, 102, 102);
+    font-size: 3rem;
+}
 .main_content_login {
     height: 80.5vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+.btn {
+    height: 2.3rem;
+    font-size: 1.3rem;
+    width: 20rem;
+    background-color: #3ABB90;
+    color: white;
+    border-radius: 8px;
+    border: none;
+}
+.inputTxt {
+    margin-top: 2rem;
+    height: 3rem;
+    width: 20rem;
+    border-radius: 8px;
+    font-size: 18px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+/*=========================================================================================*/
+/*Client*/
+/*=========================================================================================*/
+.h2_client {
+    color: rgb(102, 102, 102);
+    font-size: 3rem;
+}
+
+.main_content_client {
+    height: 80.5vh;
+    width:100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.client_table {
+    height:20px;
+    width:800px;
 }
 /* For a tablet */
 @media(max-width: 992px) {
@@ -157,6 +199,13 @@ nav ul li a {
     }
     .txtHeader {
         display:none;
+    }
+    /*=========================================================================================*/
+    /*Client*/
+    /*=========================================================================================*/
+    .client_table {
+        height: 20px;
+        width: 100px;
     }
 }
 
