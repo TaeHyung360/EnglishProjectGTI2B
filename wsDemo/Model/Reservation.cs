@@ -19,11 +19,11 @@ namespace wsDemo.Model
 
         public Reservation() { }
 
-        public Reservation(int id, int vC, int vR, Room room, string name, string date, int nights)
+        public Reservation(int id, int iC, int iR, Room room, string name, string date, int nights)
         {
             Id = id;
-            IdClient = vC;
-            IdRecepcionist = vR;
+            IdClient = iC;
+            IdRecepcionist = iR;
             Room = room;
             Name = name;
             ArrivalDate = date;
