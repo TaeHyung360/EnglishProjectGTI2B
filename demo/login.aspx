@@ -4,7 +4,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <section>
+
+    <section class="main_content_login">
 
         <h2>Login Page</h2>
 
@@ -33,4 +34,5 @@
         <asp:Button ID="Button1" Text="Login" OnClick="button_Click_Login" runat="server"/>
 
     </section>
+
 </asp:Content>

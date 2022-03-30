@@ -5,6 +5,7 @@
 <html>
 <head runat="server">
     <title></title>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -14,13 +15,13 @@
 
         <div class="header">
 
-            <a href="Index.aspx" id="Logo">
+            <div class="container_logo_title">
 
-                <img src="../Images/logoHotel.jpg" alt="logo" width="50" height="50" />
+                <a href="Index.aspx" id="Logo"><img class="linkLogo" src="../Images/logoHotel.jpg" alt="logo"/></a>
 
-                <h1 id="txtHeader">Abama Hotel Resort</h1>
+            <h1 class="txtHeader" id="txtHeader">Abama Hotel Resort</h1>
 
-            </a>
+            </div>
         
             <nav>
 
@@ -46,7 +47,9 @@
 
         <div class="footer">
 
-            <p>@Copyright Don Juan Ferrera Sala</p>
+            <a href="Index.aspx" id="Logo"><img class="linkLogo" src="../Images/logoHotel.jpg" alt="logo"/></a>
+
+            <p class="copyright" >@Copyright Don Juan Ferrera Sala</p>
 
         </div>
 

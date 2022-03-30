@@ -24,7 +24,7 @@ namespace demo
 
         protected void button_Click_reservation(object sender, EventArgs e)
         {
-            Response.Redirect("ContactPage.aspx");
+            Response.Redirect("Contact.aspx");
         }
 
         /*
